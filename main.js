@@ -4,6 +4,8 @@ import * as THREE from '/lib/three.module.js';
 import { GLTFLoader } from '/lib/GLTFLoader.js';
 
 const loader = new GLTFLoader();
+const mixers = [];            // ✅ store mixers
+const clock = new THREE.Clock();
 
 fetch('scene.json')
   .then(res => res.json())
@@ -24,6 +26,7 @@ fetch('scene.json')
       dir.position.set(5,10,7);
       scene.add(dir);
 
+      // Load models
       data.models.forEach(model => {
         if(model.name.toLowerCase().endsWith('.glb')) {
           loader.load('assets/' + model.name, gltf => {
@@ -33,6 +36,15 @@ fetch('scene.json')
             if(model.rotation) obj.rotation.set(...model.rotation);
             if(model.scale) obj.scale.setScalar(model.scale);
             scene.add(obj);
+
+            // ✅ Animation support
+            if (gltf.animations && gltf.animations.length > 0) {
+              const mixer = new THREE.AnimationMixer(obj);
+              gltf.animations.forEach(clip => {
+                mixer.clipAction(clip).play();
+              });
+              mixers.push(mixer);
+            }
           });
         } else {
           let geometry;
@@ -56,6 +68,12 @@ fetch('scene.json')
           scene.add(obj);
         }
       });
+
+      // ✅ update mixers every frame
+      scene.onBeforeRender = () => {
+        const delta = clock.getDelta();
+        mixers.forEach(m => m.update(delta));
+      };
     });
   })
   .catch(err => console.error('Failed to load scene.json', err));

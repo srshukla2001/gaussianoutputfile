@@ -3,29 +3,12 @@
   "models": [
     {
       "name": "Box",
-      "color": "ff00ea",
+      "color": "ffff00",
       "wireframe": false,
-      "geometryType": "CylinderGeometry",
+      "geometryType": "BoxGeometry",
       "position": [
         0,
         0,
-        0
-      ],
-      "rotation": [
-        0,
-        0,
-        0
-      ],
-      "scale": 5
-    },
-    {
-      "name": "father.glb",
-      "color": null,
-      "wireframe": false,
-      "geometryType": "CylinderGeometry",
-      "position": [
-        -0.32,
-        0.9,
         0
       ],
       "rotation": [
@@ -34,6 +17,40 @@
         0
       ],
       "scale": 1
+    },
+    {
+      "name": "Magic_Wand_Animation_editorial.glb",
+      "color": null,
+      "wireframe": false,
+      "geometryType": "BoxGeometry",
+      "position": [
+        0,
+        0,
+        -8.44
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1
+    },
+    {
+      "name": "father.glb",
+      "color": null,
+      "wireframe": false,
+      "geometryType": "BoxGeometry",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        1.42,
+        0
+      ],
+      "scale": 1.6
     }
   ]
 }
