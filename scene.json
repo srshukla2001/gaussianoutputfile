@@ -1,0 +1,17 @@
+{
+  "splatPath": "assets/data/bonsai/bonsai.ksplat",
+  "box": {
+    "color": "ff00ae",
+    "position": [
+      0.58,
+      3.4,
+      1.07
+    ],
+    "rotation": [
+      1.03,
+      0,
+      0
+    ],
+    "scale": 1
+  }
+}
